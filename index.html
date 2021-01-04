@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue JS 3</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.0.2"></script>
+    <style>
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+        .married {
+            padding: 2px 2px 2px 2px;
+            width: 200px;
+            border: solid 1px black;
+            background-color: coral;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Hello Vue :)</h2>
+
+    <div id="app">
+        <div v-if="showInfo">
+            <img :src="src" alt="v-bind">
+        <p>This is a dynamic template</p>
+        <ul v-for="person in filterMarried" @click="togglemarried(person)"> <!---shows only married people-->
+            <li :class="{married: person.ismarried}">{{person.name}} | {{person.age}}</li> <!--sets classname if person.ismarried-->
+        </ul>
+
+        <button @click="persons[0].age++">Increase Age</button>
+        <button @click="persons[0].age--">Decrease Age</button>
+    </br>
+    <br>
+        <label @click="resetAge">Click here to reset age</label> <br><br>
+        </div>
+        <button>
+            <span @click="showInfo=!showInfo" v-if="showInfo">Hide Information</span>
+            <span @click="showInfo=true" v-if="!showInfo">Show Information</span>
+        </button>
+        <br><br>
+        <div v-show="showInfo">(Showing Information)</div>
+
+        <div class="box" @mouseover="event">Mouse Over</div>
+        <div class="box" @mouseleave="event">Mouse Leave</div>
+        <div class="box" @dblclick="event">Double Click</div>
+        <div class="box" @mousemove="handlePos">Position: {{ x }} {{ y }}</div>
+
+    </div>
+
+</body>
+<script src="app.js">
+</script>
+</html>
